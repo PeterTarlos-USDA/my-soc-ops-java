@@ -11,7 +11,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Validates board assembly, cell flipping, and victory detection
@@ -19,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class BoardAssemblerTests {
 
-    /* ── board creation ───────────────────────────────────────── */
+    /* Board creation */
 
     @Test
     @DisplayName("Assembled board contains exactly twenty-five cells")
@@ -35,8 +37,8 @@ class BoardAssemblerTests {
         List<BingoCell> generatedBoard = BoardAssembler.assembleNewBoard();
         BingoCell centreTile = generatedBoard.get(12);
 
-        assertTrue(centreTile.freeCell(),  "Centre tile must be flagged as free");
-        assertTrue(centreTile.selected(),  "Free cell must start already tapped");
+        assertTrue(centreTile.freeCell(), "Centre tile must be flagged as free");
+        assertTrue(centreTile.selected(), "Free cell must start already tapped");
     }
 
     @Test
@@ -51,7 +53,7 @@ class BoardAssemblerTests {
         }
     }
 
-    /* ── cell toggling ────────────────────────────────────────── */
+    /* Cell toggling */
 
     @Test
     @DisplayName("Flipping a regular cell toggles its selection on then off")
@@ -81,7 +83,7 @@ class BoardAssemblerTests {
                 "Free cell flag must not change");
     }
 
-    /* ── victory detection ────────────────────────────────────── */
+    /* Victory detection */
 
     @Test
     @DisplayName("Completing the entire first row is detected as a row victory")
